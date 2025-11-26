@@ -4,6 +4,7 @@ pub mod models;
 pub mod errors;
 
 use std::path::PathBuf;
+use std::sync::Arc;
 
 use getset::{CopyGetters, Getters};
 use serde::Deserialize;
@@ -22,14 +23,14 @@ pub enum WorkingMode{
 }
 
 impl WorkingMode{
-    pub async fn create_client(&self, config: &LLMClientConfig) -> TranslatorResult<Box<dyn LLMClient>>
+    pub async fn create_client(&self, config: &LLMClientConfig) -> TranslatorResult<Arc<dyn LLMClient +Send + Sync>>
     {
         match self {
            WorkingMode::OPENAI => {
             let config = config.openai();
             tracing::info!("Running OPENAI mode!");
             println!("Running OPENAI mode!");
-            Ok(Box::new(OpenAIClient::connect(config).await?))
+            Ok(Arc::new(OpenAIClient::connect(config).await?))
             },
             _ => panic!("Unimplemented LLM Client mode!")
         }

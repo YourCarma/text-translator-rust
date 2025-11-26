@@ -5,7 +5,7 @@ use serde::Serialize;
 use thiserror::Error;
 use utoipa::ToSchema;
 
-// use crate::server::swagger::SwaggerExample;
+use crate::server::swagger::SwaggerExample;
 use crate::modules::llm_client::errors::TranslatorErrors;
 
 pub type ServerResult<T> = Result<T, ServerError>;
@@ -101,36 +101,36 @@ impl IntoResponse for ServerError {
     }
 }
 
-// impl SwaggerExample for ServerError {
-//     type Example = Self;
+impl SwaggerExample for ServerError {
+    type Example = Self;
 
-//     fn example(value: Option<&str>) -> Self::Example {
-//         match value {
-//             None => ServerError::ServiceUnavailable("Service unavailable".to_owned()),
-//             Some(msg) => ServerError::InternalError(msg.to_owned()),
-//         }
-//     }
-// }
+    fn example(value: Option<&str>) -> Self::Example {
+        match value {
+            None => ServerError::ServiceUnavailable("Service unavailable".to_owned()),
+            Some(msg) => ServerError::InternalError(msg.to_owned()),
+        }
+    }
+}
 
-// #[derive(Serialize, ToSchema)]
-// pub struct Success {
-//     status: u16,
-//     message: String,
-// }
+#[derive(Serialize, ToSchema)]
+pub struct Success {
+    status: u16,
+    message: String,
+}
 
-// impl Default for Success {
-//     fn default() -> Self {
-//         Success {
-//             status: 200,
-//             message: "Ok".to_string(),
-//         }
-//     }
-// }
+impl Default for Success {
+    fn default() -> Self {
+        Success {
+            status: 200,
+            message: "Ok".to_string(),
+        }
+    }
+}
 
-// impl SwaggerExample for Success {
-//     type Example = Self;
+impl SwaggerExample for Success {
+    type Example = Self;
 
-//     fn example(_value: Option<&str>) -> Self::Example {
-//         Success::default()
-//     }
-// }
+    fn example(_value: Option<&str>) -> Self::Example {
+        Success::default()
+    }
+}

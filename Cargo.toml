@@ -1,5 +1,5 @@
 [package]
-name = "geek-metaverse-image-generation"
+name = "text_translator_rust"
 version = "1.0.0"
 edition = "2024"
 

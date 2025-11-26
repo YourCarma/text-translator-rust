@@ -12,7 +12,12 @@ pub struct TranslateTask{
     source_language: String,
     #[schema(default = "ru")]
     target_language: String,
-    #[schema(default = "122333")]
+    #[schema(default = "This is my rifle. There are many like it, but this one is mine.
+                My rifle is my best friend. It is my life. I must master it as I must master my life.
+                My rifle, without me, is useless. Without my rifle, I am useless. I must fire my rifle true. 
+                I must shoot straighter than my enemy who is trying to kill me. I must shoot him before he shoots me. I will...
+                My rifle and I know that what counts in war is not the rounds we fire, the noise of our burst, nor the smoke we make. 
+                We know that it is the hits that count. We will hit..")]
     text: String,
 }
 

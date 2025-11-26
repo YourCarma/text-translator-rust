@@ -77,17 +77,17 @@ impl LLMClient for OpenAIClient{
                                  By default, perform translation only.";
         const MAX_TOKENS: u32 = 32_000;
         let model_name = self.options.model_name();
-        
+
         let source_language = Language::from_639_1(translate_task.source_language()).unwrap().to_name();
         let target_language = Language::from_639_1(translate_task.target_language()).unwrap().to_name();
 
         let text = translate_task.text();
-        println!("{}", text);
         let user_prompt = format!("Translate the following segment into {target_language}, without additional explanation.
-                The {source_language} segment:
-                ```
-                {text}
-                ```", target_language=target_language, source_language=source_language, text=text);
+        The {source_language} segment:
+        ```
+        {text}
+        ```", target_language=target_language, source_language=source_language, text=text);
+        println!("{}", user_prompt);
         let request = CreateChatCompletionRequestArgs::default()
                             .model(model_name)
                             .messages([
@@ -104,15 +104,9 @@ impl LLMClient for OpenAIClient{
                             .build()?;
         let ctx = self.client.read().await;
         let response = ctx.chat().create(request).await?;
-
+        let transalted_response = response.choices[0].message.content.as_deref().unwrap();                       
         println!("\nResponse:\n");
-    for choice in response.choices {
-        println!(
-            "{}: Role: {}  Content: {:?}",
-            choice.index, choice.message.role, choice.message.content
-        );
-    }
-        Ok("Heello".to_owned())
+        Ok(transalted_response.to_owned())
         }
 }
 
