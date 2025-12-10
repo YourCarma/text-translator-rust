@@ -1,0 +1,35 @@
+services:
+
+  # EXAMPLE OF LLM TRANSLATE MODEL INFERENCE
+  llama-translator-server:
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda
+    restart: on-failure
+    command: "-m /models/hunyuan-mt-7b-q8_0.gguf -c 30000 --host 0.0.0.0 --port 8080 --metrics --n-gpu-layers 99"
+    networks:
+      - translator-net
+    ports:
+      - '8097:8080'
+    volumes:
+      - '/mnt/sda/Development/DevDeployment/volumes/translator_vllm_quantize:/models'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: [ '0' ]
+              capabilities: [ gpu ]
+
+  text-translator-rust:
+    image: text-translator-rust:latest
+    restart: on-failure
+    stdin_open: true
+    tty: true
+    networks:
+    - translator-net
+    ports:
+    - '10015:10015'
+    env_file:
+    - '.env.text-translator-rust'
+    volumes:
+    - './config:/app/config'
+    - './assets:/app/assets'

@@ -1,0 +1,75 @@
+{
+  "ru": {
+    "639-1": "ru",
+    "639-2": "rus",
+    "name": "Русский",
+    "native_name": "Russian"
+  },
+  "en": {
+    "639-1": "en",
+    "639-2": "eng",
+    "name": "Английский",
+    "native_name": "English"
+  },
+  "ar": {
+    "639-1": "ar",
+    "639-2": "ara",
+    "name": "Арабский",
+    "native_name": "Arabic"
+  },
+  "fr": {
+    "639-1": "fr",
+    "639-2": "fra",
+    "name": "Французский",
+    "native_name": "French"
+  },
+  "uk": {
+    "639-1": "uk",
+    "639-2": "ukr",
+    "name": "Украинский",
+    "native_name": "Ukrainian"
+  },
+  "de": {
+    "639-1": "de",
+    "639-2": "deu",
+    "name": "Немецкий",
+    "native_name": "German"
+  },
+  "es": {
+    "639-1": "es",
+    "639-2": "spa",
+    "name": "Испанский",
+    "native_name": "Spain"
+  },
+  "it": {
+    "639-1": "it",
+    "639-2": "ita",
+    "name": "Итальянский",
+    "native_name": "Italian"
+  },
+   "zh": {
+    "639-1": "zh",
+    "639-2": "chi",
+    "name": "Китайский (упрощённый)",
+    "native_name": "Chinese"
+  },
+  "pl": {
+    "639-1": "pl",
+    "639-2": "pol",
+    "name": "Польский",
+    "native_name": "Polish"
+  },
+  "he": {
+    "639-1": "he",
+    "639-2": "heb",
+    "name": "Иврит",
+    "native_name": "Hebrew"
+  },
+
+  "auto": {
+    "639-1": "auto",
+    "639-2": "auto",
+    "name": "Авто",
+    "native_name": "Авто"
+  }
+}

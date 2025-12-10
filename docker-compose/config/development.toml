@@ -10,7 +10,6 @@ openai_api_key="sk-or-v1-no-auth"
 model_name="tencent.Hunyuan-MT-Chimera-7B.Q8_0"
 use_proxy=false
 proxy_address="*your proxy url*"
-# model_name="openai/gpt-5-image-mini"
 
 [logger]
 level = "debug"
