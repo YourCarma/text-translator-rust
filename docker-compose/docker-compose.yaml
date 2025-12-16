@@ -10,7 +10,7 @@ services:
     ports:
       - '8097:8080'
     volumes:
-      - '/mnt/sda/Development/DevDeployment/volumes/translator_vllm_quantize:/models'
+      - './translator_vllm_quantize:/models'
     deploy:
       resources:
         reservations:
